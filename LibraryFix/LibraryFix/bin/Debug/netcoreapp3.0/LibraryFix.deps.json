@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.0": {
-      "Bibliotek/1.0.0": {
+      "LibraryFix/1.0.0": {
         "runtime": {
-          "Bibliotek.dll": {}
+          "LibraryFix.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "Bibliotek/1.0.0": {
+    "LibraryFix/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
