@@ -33,32 +33,35 @@ namespace Bibliotek
                 i++;
             }
         }
-        public void BookCheck(string name)
+        public static void BookCheck(string name)
         {
             string tName = name.Trim().ToLower();
             int i = 0;
-            foreach (Book element in books)
+            bool isRunning = true;
+            while (isRunning)
             {
                 if (tName == books[i].title.Trim().ToLower())
                 {
                     if (books[i].borrowed)
                     {
                         Console.WriteLine("Book is already borrowed");
+                        isRunning = false;
                     }
-                    else
+                    else if (books[i].borrowed != true)
                     {
                         Console.WriteLine("That book has not been taken out");
+                        isRunning = false;
                     }
                 }
-                else
+                else if (i > books.Length)
                 {
                     Console.WriteLine("There is no book by that name");
+
                 }
                 i++;
             }
-
         }
-        public void ChangeBTime(string name)
+        public static void ChangeBTime(string name)
         {
             string tName = name.Trim().ToLower();
             int i = 0;
@@ -72,7 +75,7 @@ namespace Bibliotek
                 }
             }
         }
-        public void Browse()
+        public static void Browse()
         {
             int i = 0;
             foreach (Book element in books)
