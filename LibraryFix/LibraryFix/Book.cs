@@ -9,7 +9,6 @@ namespace Bibliotek
         public string title;
         public bool borrowed;
         public int borrowTime;
-
         public Book(string title, bool borrowed, int borrowTime)
         {
             this.title = title;

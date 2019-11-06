@@ -6,7 +6,7 @@ namespace Bibliotek
 {
     class Library
     {
-        public string traffic = "busy";
+        public string traffic = "busy";//gør ikke noget endnu tilføjer det senere
         public static Book[] books = new Book[] { new Book("The color from space", false, 14), new Book("1984", true, 14), new Book("samplebook", false, 14) };
 
         public static void BorrowBook(string name)
