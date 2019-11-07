@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Bibliotek
+namespace LibraryFix
 {
     class Library
     {
-        public static Book[] books = new Book[] { new Book("The color from space", false, 14), new Book("1984", true, 14), new Book("samplebook", false, 14) };
+        public List<Book> books;
+        public Library(List<Book> books)
+        {
+            this.books = books;
+        }
 
-        public static int BorrowBook(string name)
+        public int BorrowBook(string name, User user)
         {
             string tName = name.ToLower().Trim();
             int i = 0;
             bool isrunning = true;
             while (isrunning)
             {
-                if (tName == books[i].title.ToLower().Trim())
+                if (tName == books[i].title.ToLower())
                 {
                     if (books[i].borrowed != true)
                     {
                         books[i].borrowed = true;
+                        user.userBooks.Add(books[i]);
                         isrunning = false;
                         return 1;
                     }
@@ -30,14 +35,39 @@ namespace Bibliotek
                     }
                     else
                     {
+                        isrunning = false;
                         return 3;
                     }
+                }
+                if(i >= user.userBooks.Count)
+                {
+                    return 3;
                 }
                 i++;
             }
             return 4;
         }
-        public static int BookCheck(string name)
+        public int ReturnBook(string name, User user)
+        {
+            int i = 0;
+            
+            foreach(Book book in user.userBooks)
+            { 
+                if (i >= user.userBooks.Count)
+                {
+                    return 2;
+                }
+                if(name == user.userBooks[i].title.ToLower()) 
+                {
+                    user.userBooks.RemoveAt(i);
+                    books[i].borrowed = false;
+                    return 1;
+                }
+                i++;
+            }
+            return 2;
+        }
+        public int BookCheck(string name)
         {
             string tName = name.Trim().ToLower();
             int i = 0;
@@ -48,18 +78,15 @@ namespace Bibliotek
                 {
                     if (books[i].borrowed)
                     {
-                        isRunning = false;
                         return 1;
                     }
                     else if (books[i].borrowed != true)
                     {
-                        isRunning = false;
                         return 2;
                     }
                 }
-                else if (i > books.Length)
+                else if (i > books.Count)
                 {
-                    isRunning = false;
                     return 3;
                 }
 
@@ -67,7 +94,7 @@ namespace Bibliotek
             }
             return 4;
         }
-        public static void ChangeBTime(string name, int time)
+        public void ChangeBTime(string name, int time)
         {
             string tName = name.Trim().ToLower();
             int i = 0;
@@ -79,9 +106,9 @@ namespace Bibliotek
                 }
             }
         }
-        public static string[] Browse()
+        public string[] Browse()
         {
-            string[] array = new string[books.Length];
+            string[] array = new string[books.Count];
             int i = 0;
             foreach (Book element in books)
             {
