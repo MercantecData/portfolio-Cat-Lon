@@ -6,10 +6,9 @@ namespace Bibliotek
 {
     class Library
     {
-        public string traffic = "busy";//gør ikke noget endnu tilføjer det senere
         public static Book[] books = new Book[] { new Book("The color from space", false, 14), new Book("1984", true, 14), new Book("samplebook", false, 14) };
 
-        public static void BorrowBook(string name)
+        public static int BorrowBook(string name)
         {
             string tName = name.ToLower().Trim();
             int i = 0;
@@ -20,54 +19,59 @@ namespace Bibliotek
                 {
                     if (books[i].borrowed != true)
                     {
-                        Console.WriteLine($"You have borrowed {books[i].title}");
                         books[i].borrowed = true;
                         isrunning = false;
+                        return 1;
+                    }
+                    else if (books[i].borrowed)
+                    {
+                        isrunning = false;
+                        return 2;
                     }
                     else
                     {
-                        Console.WriteLine("Book is already borrowed");
-                        isrunning = false;
+                        return 3;
                     }
                 }
                 i++;
             }
+            return 4;
         }
-        public static void BookCheck(string name)
+        public static int BookCheck(string name)
         {
             string tName = name.Trim().ToLower();
             int i = 0;
             bool isRunning = true;
-            while (isRunning)
+            while(isRunning)
             {
                 if (tName == books[i].title.Trim().ToLower())
                 {
                     if (books[i].borrowed)
                     {
-                        Console.WriteLine("Book is already borrowed");
                         isRunning = false;
+                        return 1;
                     }
                     else if (books[i].borrowed != true)
                     {
-                        Console.WriteLine("That book has not been taken out");
                         isRunning = false;
+                        return 2;
                     }
                 }
                 else if (i > books.Length)
                 {
-                    Console.WriteLine("There is no book by that name");
-
+                    isRunning = false;
+                    return 3;
                 }
+
                 i++;
             }
+            return 4;
         }
-        public static void ChangeBTime(string name)
+        public static void ChangeBTime(string name, int time)
         {
             string tName = name.Trim().ToLower();
             int i = 0;
-            Console.WriteLine("how many days do you want to subtract/extend from the borrow time?");
-            int time = int.Parse(Console.ReadLine());
-            foreach (Book element in books)
+            foreach (Book book in books)
             {
                 if (tName == books[i].title.Trim().ToLower())
                 {
@@ -75,14 +79,16 @@ namespace Bibliotek
                 }
             }
         }
-        public static void Browse()
+        public static string[] Browse()
         {
+            string[] array = new string[books.Length];
             int i = 0;
             foreach (Book element in books)
             {
-                Console.WriteLine(books[i].title);
+                array[i] = books[i].title;
                 i++;
             }
+            return array;
         }
     }
 }
