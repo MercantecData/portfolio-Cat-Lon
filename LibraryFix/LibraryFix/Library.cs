@@ -74,6 +74,10 @@ namespace LibraryFix
             bool isRunning = true;
             while(isRunning)
             {
+                if (i >= books.Count)
+                {
+                    return 3;
+                }
                 if (tName == books[i].title.Trim().ToLower())
                 {
                     if (books[i].borrowed)
@@ -85,11 +89,6 @@ namespace LibraryFix
                         return 2;
                     }
                 }
-                else if (i > books.Count)
-                {
-                    return 3;
-                }
-
                 i++;
             }
             return 4;

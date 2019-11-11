@@ -13,7 +13,7 @@ namespace LibraryFix
             User user3 = new User("Bunk", new List<Book>());
             User[] users = { user1, user2, user3 };
             bool isRunning = true;
-            Console.Write("Indtast dit BrugerNavn: ");
+            Console.Write("Username: ");
             string useName = Console.ReadLine();
             if (useName == user1.userID || useName == user2.userID || useName == user3.userID)
             {
@@ -83,15 +83,11 @@ namespace LibraryFix
                                 switch (num)
                                 {
                                     case 1:
-                                        {
                                             Console.WriteLine("That book has been taken out");
                                             break;
-                                        }
                                     case 2:
-                                        {
                                             Console.WriteLine("That book has not been taken out");
                                             break;
-                                        }
                                     case 3:
                                             Console.WriteLine("There is no book by that name");
                                             break;
@@ -103,7 +99,7 @@ namespace LibraryFix
                             }
                         case "5":
                             
-                                Console.WriteLine("Type in the name of the book you'd like to extend or subtract time from. and then how much you'd like to subtract or extend by (days)");
+                                Console.WriteLine("Type in the name of the book you'd like to extend or subtract time from.\nand then how much you'd like to subtract or extend by (days)");
                                 string checkB = Console.ReadLine();
                                 library.ChangeBTime(checkB, int.Parse(Console.ReadLine()));
                                 break;
@@ -116,7 +112,7 @@ namespace LibraryFix
             }
             else
             {
-                Console.WriteLine("forkert BrugerNavn");
+                Console.WriteLine("Wrong username");
             }
         }
         static int UserCheck(string name)
