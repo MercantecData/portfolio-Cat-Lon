@@ -5,7 +5,7 @@ font-family: monospace, monospace, monospace
 p{
     padding: 10px;
 }
-#TextBody{
+#wholeBody{
     margin: 20px;
     background: lavender;
     font-size: 15px;
@@ -25,7 +25,7 @@ p{
 }
 #NavBar li{
     display: inline;
-    border-right: 3px solid #000;
+    border-bottom: 3px solid #000;
 }
 #NavBar li:last-child{
     border-right: none;
@@ -49,4 +49,10 @@ h2{
 #Contents li:hover{
     background-color: #555;
     color: blue;
+}
+img{
+    padding-top: 150px;
+}
+#NavBar .active {
+    background-color: yellow;
 }
