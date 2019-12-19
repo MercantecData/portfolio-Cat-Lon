@@ -5,6 +5,9 @@ font-family: monospace, monospace, monospace
 p{
     padding: 10px;
 }
+h1{
+    padding-left: 10px;
+}
 #wholeBody{
     margin: 20px;
     background: lavender;
@@ -55,4 +58,14 @@ img{
 }
 #NavBar .active {
     background-color: yellow;
+}
+#Front h2{
+    padding-left: 25px;
+}
+#Front a{
+    padding-left: 60px;
+}
+#bacon img{
+    height: 100px;
+    width: 100px;
 }
