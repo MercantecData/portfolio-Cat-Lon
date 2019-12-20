@@ -30,9 +30,6 @@ h1{
     display: inline;
     border-bottom: 3px solid #000;
 }
-#NavBar li:last-child{
-    border-right: none;
-}
 #NavBar a:hover{
     background-color: #555;
     color: blue;
@@ -54,7 +51,7 @@ h2{
     color: blue;
 }
 img{
-    padding-top: 150px;
+    padding-top: 10px;
 }
 #NavBar .active {
     background-color: yellow;
